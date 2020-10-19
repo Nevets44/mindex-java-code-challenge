@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mindex.challenge.data.Compensation;
-import com.mindex.challenge.data.Employee;
-import com.mindex.challenge.data.ReportingStructure;
 import com.mindex.challenge.service.CompensationService;
 
 @RestController
@@ -32,6 +30,6 @@ private static final Logger LOG = LoggerFactory.getLogger(CompensationController
     public Compensation read(@PathVariable String id) {
         LOG.debug("Received compensation retrieval request for employee id [{}]", id);
 
-        return compensationService.read(id);
+        return compensationService.findByEmployeeId(id);
     }
 }
