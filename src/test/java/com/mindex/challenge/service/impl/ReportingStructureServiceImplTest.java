@@ -22,7 +22,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.mindex.challenge.data.Compensation;
 import com.mindex.challenge.data.Employee;
+import com.mindex.challenge.data.ReportingStructure;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -51,10 +53,29 @@ public class ReportingStructureServiceImplTest {
     @Test
     public void testCreateReadUpdate() {
     	// Create 4 employees so that have enough to conduct the test
-        Employee emp1 = new Employee("John", "Doe", "Developer", "Engineering");
-        Employee emp2 = new Employee("Jane", "Doe", "Developer", "Engineering");
-        Employee emp3 = new Employee("Jock", "Doe", "Developer", "Engineering");
-        Employee emp4 = new Employee("Jake", "Doe", "Developer", "Engineering");
+        Employee emp1 = new Employee();
+        emp1.setFirstName("John");
+        emp1.setLastName("Doe");
+        emp1.setPosition("Developer");
+        emp1.setDepartment("Engineering");
+        
+        Employee emp2 = new Employee();
+        emp2.setFirstName("Jane");
+        emp2.setLastName("Doe");
+        emp2.setPosition("Developer");
+        emp2.setDepartment("Engineering");
+        
+        Employee emp3 = new Employee();
+        emp3.setFirstName("Jock");
+        emp3.setLastName("Doe");
+        emp3.setPosition("Developer");
+        emp3.setDepartment("Engineering");
+        
+        Employee emp4 = new Employee();
+        emp4.setFirstName("Jake");
+        emp4.setLastName("Doe");
+        emp4.setPosition("Developer");
+        emp4.setDepartment("Engineering");
 
         List<Employee> employeeList = Stream.of(emp1,emp2,emp3,emp4).collect(Collectors.toList());
         
@@ -79,27 +100,5 @@ public class ReportingStructureServiceImplTest {
         assertEquals(emp1.getDirectReports().size(), 2);
         assertEquals(emp2.getDirectReports().size(), 1);
         
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        
-        // Update the two employees
-        emp1 = restTemplate.exchange(employeeIdUrl,
-                HttpMethod.PUT,
-                new HttpEntity<Employee>(emp1, headers),
-                Employee.class,
-                emp1.getEmployeeId()).getBody();
-        emp2 = restTemplate.exchange(employeeIdUrl,
-                HttpMethod.PUT,
-                new HttpEntity<Employee>(emp2, headers),
-                Employee.class,
-                emp2.getEmployeeId()).getBody();
-        
-    }
-
-    private static void assertEmployeeEquivalence(Employee expected, Employee actual) {
-        assertEquals(expected.getFirstName(), actual.getFirstName());
-        assertEquals(expected.getLastName(), actual.getLastName());
-        assertEquals(expected.getDepartment(), actual.getDepartment());
-        assertEquals(expected.getPosition(), actual.getPosition());
     }
 }
