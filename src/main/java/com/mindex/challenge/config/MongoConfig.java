@@ -1,6 +1,5 @@
 package com.mindex.challenge.config;
 
-import com.mindex.challenge.dao.EmployeeRepository;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import de.bwaldvogel.mongo.MongoServer;
@@ -37,5 +36,6 @@ public class MongoConfig{
         return MongoClients.create("mongodb:/" + mongoServer().getLocalAddress());
     }
 }
+
 
 
