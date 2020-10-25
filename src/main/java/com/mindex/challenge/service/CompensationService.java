@@ -4,5 +4,5 @@ import com.mindex.challenge.data.Compensation;
 
 public interface CompensationService {
 	Compensation create (Compensation compensation);
-	Compensation findByEmployeeId (String employeeId);
+	Compensation findByEmployeeEmployeeId (String employeeId);
 }

@@ -3,6 +3,7 @@ package com.mindex.challenge.data;
 import java.time.LocalDate;
 
 public class Compensation {
+	private String employeeId;
 	private Employee employee;
 	private double salary;
 	private LocalDate effectiveDate;
@@ -10,6 +11,18 @@ public class Compensation {
 	public Compensation() {
 		
 	}
+
+	public String getEmployeeId() {
+		return employeeId;
+	}
+
+
+
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
+	}
+
+
 
 	public Employee getEmployee() {
 		return employee;

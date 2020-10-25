@@ -30,6 +30,6 @@ private static final Logger LOG = LoggerFactory.getLogger(CompensationController
     public Compensation read(@PathVariable String id) {
         LOG.debug("Received compensation retrieval request for employee id [{}]", id);
 
-        return compensationService.findByEmployeeId(id);
+        return compensationService.findByEmployeeEmployeeId(id);
     }
 }

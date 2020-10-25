@@ -27,7 +27,7 @@ public class CompensationServiceImpl implements CompensationService {
 	}
 
 	@Override
-	public Compensation findByEmployeeId(String employeeId) {
+	public Compensation findByEmployeeEmployeeId(String employeeId) {
 		LOG.debug("Retrieving compensation record with employee id [{}]", employeeId);
 
 		Compensation compensation = compensationRepository.findByEmployeeEmployeeId(employeeId);
@@ -36,6 +36,6 @@ public class CompensationServiceImpl implements CompensationService {
 			 throw new RuntimeException("Invalid employeeId: " + employeeId);
 		}
 		
-		return null;
+		return compensation;
 	}
 }
